@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manojkumar P — Software &amp; AI/ML Developer</title>
+<meta name="description" content="Portfolio of Manojkumar P — Information Technology undergraduate building on-device AI safety systems, computer vision, and full-stack applications." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0E13;
+    --surface:#121820;
+    --surface-2:#1A2129;
+    --border:#232C36;
+    --text:#E9EEF2;
+    --text-muted:#8C99A6;
+    --text-dim:#5B6672;
+    --signal:#FF6B35;
+    --signal-dim:#7A3D24;
+    --scan:#2DD4BF;
+    --scan-dim:#164F49;
+    --radius:10px;
+    --maxw:1080px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(255,107,53,0.07), transparent 40%),
+      radial-gradient(circle at 85% 15%, rgba(45,212,191,0.06), transparent 40%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1;}
+
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.01em;}
+
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,14,19,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:16px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav-brand{
+    font-family:'JetBrains Mono',monospace;
+    font-size:14px;font-weight:600;letter-spacing:0.02em;
+    display:flex;align-items:center;gap:10px;
+  }
+  .nav-brand .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--signal);
+    box-shadow:0 0 8px var(--signal);
+    animation:blink 2.4s ease-in-out infinite;
+  }
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.35;}}
+  .nav-links{display:flex;gap:28px;font-size:14px;color:var(--text-muted);}
+  .nav-links a:hover{color:var(--text);}
+  .nav-links{display:none;}
+  @media(min-width:720px){.nav-links{display:flex;}}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:96px 0 72px;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:48px;
+    align-items:center;
+  }
+  @media(min-width:860px){
+    .hero{grid-template-columns:1.15fr 0.85fr;padding:120px 0 96px;}
+  }
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;color:var(--scan);
+    border:1px solid var(--scan-dim);
+    background:rgba(45,212,191,0.06);
+    padding:6px 12px;border-radius:100px;
+    margin-bottom:24px;
+    letter-spacing:0.04em;
+  }
+  .eyebrow .pulse{width:6px;height:6px;border-radius:50%;background:var(--scan);box-shadow:0 0 6px var(--scan);}
+
+  .hero h1{
+    font-size:clamp(2.4rem,6vw,4rem);
+    font-weight:700;
+    line-height:1.04;
+    margin-bottom:18px;
+  }
+  .hero h1 span{color:var(--signal);}
+
+  .hero .role-line{
+    font-family:'JetBrains Mono',monospace;
+    font-size:clamp(0.95rem,2vw,1.05rem);
+    color:var(--text-muted);
+    margin-bottom:22px;
+    min-height:1.6em;
+    border-right:2px solid var(--signal);
+    display:inline-block;
+    white-space:nowrap;
+    overflow:hidden;
+  }
+
+  .hero p.lead{
+    color:var(--text-muted);
+    font-size:1.02rem;
+    max-width:52ch;
+    margin-bottom:32px;
+  }
+
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:36px;}
+  .btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;font-weight:500;
+    padding:12px 22px;border-radius:6px;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:transform 0.15s ease, background 0.15s ease, border-color .15s ease;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--signal);color:#0A0E13;font-weight:600;}
+  .btn-primary:hover{transform:translateY(-2px);background:#ff7f52;}
+  .btn-ghost{border-color:var(--border);color:var(--text);}
+  .btn-ghost:hover{transform:translateY(-2px);border-color:var(--scan-dim);color:var(--scan);}
+
+  .contact-row{display:flex;flex-wrap:wrap;gap:20px;font-size:13px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;}
+  .contact-row a:hover{color:var(--scan);}
+
+  /* ---------- Guardian dial (signature element) ---------- */
+  .dial-wrap{
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .dial{
+    position:relative;width:280px;height:280px;max-width:80vw;max-height:80vw;
+    border-radius:50%;
+    border:1px solid var(--border);
+    background:radial-gradient(circle at 50% 50%, var(--surface) 0%, var(--bg) 78%);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .dial::before{
+    content:"";position:absolute;inset:22px;border-radius:50%;
+    border:1px dashed var(--border);
+  }
+  .dial-arc{
+    position:absolute;inset:0;
+    animation:spin 16s linear infinite;
+  }
+  @media(prefers-reduced-motion:reduce){.dial-arc{animation:none;}}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .dial-core{
+    text-align:center;position:relative;z-index:2;
+  }
+  .dial-core .pct{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:2.6rem;font-weight:700;color:var(--signal);
+  }
+  .dial-core .label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;color:var(--text-dim);letter-spacing:0.08em;
+    margin-top:4px;
+  }
+  .dial-tick{
+    position:absolute;width:4px;height:4px;border-radius:50%;
+    background:var(--scan);
+    box-shadow:0 0 6px var(--scan);
+  }
+
+  /* ---------- Section shell ---------- */
+  section{padding:64px 0;border-top:1px solid var(--border);}
+  .section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:36px;}
+  .section-head .idx{
+    font-family:'JetBrains Mono',monospace;color:var(--signal);font-size:13px;
+  }
+  .section-head h2{font-size:1.6rem;font-weight:600;}
+  .section-sub{color:var(--text-muted);font-size:0.95rem;margin-top:-24px;margin-bottom:32px;max-width:60ch;}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid;gap:32px;grid-template-columns:1fr;}
+  @media(min-width:760px){.about-grid{grid-template-columns:1.3fr 1fr;}}
+  .about-text p{color:var(--text-muted);margin-bottom:16px;max-width:62ch;}
+  .stat-block{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .stat{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:18px;
+  }
+  .stat .num{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--scan);}
+  .stat .cap{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);margin-top:4px;letter-spacing:0.03em;}
+
+  /* ---------- Skills ---------- */
+  .skill-grid{display:grid;gap:16px;grid-template-columns:1fr;}
+  @media(min-width:640px){.skill-grid{grid-template-columns:1fr 1fr;}}
+  @media(min-width:960px){.skill-grid{grid-template-columns:1fr 1fr 1fr;}}
+  .skill-mod{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:20px;
+  }
+  .skill-mod h3{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--scan);
+    letter-spacing:0.05em;margin-bottom:14px;text-transform:uppercase;
+  }
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-muted);
+    border:1px solid var(--border);padding:5px 10px;border-radius:5px;
+  }
+
+  /* ---------- Projects ---------- */
+  .project-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:28px;margin-bottom:20px;
+    display:grid;gap:20px;grid-template-columns:1fr;
+    position:relative;overflow:hidden;
+  }
+  .project-card.flagship{border-color:var(--signal-dim);background:linear-gradient(180deg, rgba(255,107,53,0.05), var(--surface) 40%);}
+  @media(min-width:780px){.project-card{grid-template-columns:1.6fr 1fr;}}
+
+  .project-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+  .project-card h3{font-size:1.25rem;font-weight:600;}
+  .status{
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:4px 10px;border-radius:100px;
+    letter-spacing:0.04em;
+  }
+  .status.active{color:var(--signal);border:1px solid var(--signal-dim);background:rgba(255,107,53,0.08);}
+  .status.done{color:var(--scan);border:1px solid var(--scan-dim);background:rgba(45,212,191,0.08);}
+
+  .project-card p{color:var(--text-muted);font-size:0.95rem;margin-bottom:14px;}
+  .project-card ul{margin-bottom:14px;}
+  .project-card li{
+    color:var(--text-muted);font-size:0.9rem;margin-bottom:8px;padding-left:18px;position:relative;
+  }
+  .project-card li::before{
+    content:"›";position:absolute;left:0;color:var(--scan);font-weight:700;
+  }
+  .stack-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);letter-spacing:0.04em;margin-bottom:8px;}
+
+  .project-side{
+    border-left:1px solid var(--border);padding-left:20px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  @media(max-width:779px){.project-side{border-left:none;border-top:1px solid var(--border);padding-left:0;padding-top:16px;}}
+
+  /* ---------- Experience log ---------- */
+  .log{border-left:1px solid var(--border);margin-left:6px;}
+  .log-entry{position:relative;padding:0 0 32px 28px;}
+  .log-entry:last-child{padding-bottom:0;}
+  .log-entry::before{
+    content:"";position:absolute;left:-5px;top:4px;width:9px;height:9px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--signal);
+  }
+  .log-time{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text-dim);margin-bottom:6px;letter-spacing:0.03em;}
+  .log-entry h3{font-size:1.05rem;font-weight:600;margin-bottom:6px;}
+  .log-entry p{color:var(--text-muted);font-size:0.93rem;max-width:60ch;}
+
+  /* ---------- Education ---------- */
+  .edu-item{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+    padding:18px 0;border-bottom:1px solid var(--border);
+  }
+  .edu-item:last-child{border-bottom:none;}
+  .edu-item h3{font-size:1rem;font-weight:600;}
+  .edu-item .school{color:var(--text-muted);font-size:0.9rem;margin-top:2px;}
+  .edu-item .metric{font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--scan);text-align:right;}
+  .edu-item .yr{color:var(--text-dim);font-size:0.8rem;margin-top:2px;text-align:right;}
+
+  /* ---------- Contact / Footer ---------- */
+  footer{padding:80px 0 40px;text-align:center;}
+  footer h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:16px;}
+  footer p{color:var(--text-muted);margin-bottom:32px;}
+  .footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-bottom:48px;}
+  .foot-note{color:var(--text-dim);font-size:12px;font-family:'JetBrains Mono',monospace;}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>MANOJKUMAR&nbsp;P</div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" style="border-top:none;">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span>AVAILABLE FOR INTERNSHIPS &amp; ENTRY ROLES</div>
+      <h1>Manojkumar P builds systems that <span>watch, detect &amp; respond.</span></h1>
+      <div class="role-line mono" id="roleLine"></div>
+      <p class="lead">Information Technology undergraduate (CGPA 8.51) focused on on-device AI, computer vision, and full-stack engineering — currently building an offline AI safety system for Android.</p>
+      <div class="cta-row">
+        <a href="#projects" class="btn btn-primary">View Projects →</a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+      <div class="contact-row">
+        <a href="mailto:manojkmar1106@gmail.com">manojkmar1106@gmail.com</a>
+        <a href="tel:+919342822774">+91 93428 22774</a>
+        <a href="https://github.com/Manoj-1Kumar" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/manojkumar-p-303755328/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+
+    <div class="dial-wrap">
+      <div class="dial">
+        <svg class="dial-arc" viewBox="0 0 280 280">
+          <circle cx="140" cy="140" r="128" fill="none" stroke="#FF6B35" stroke-width="2" stroke-dasharray="8 14" opacity="0.55"/>
+        </svg>
+        <div class="dial-core">
+          <div class="pct">8.51</div>
+          <div class="label mono">CGPA · GUARDIAN CONFIDENCE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-head reveal"><span class="idx mono">01</span><h2>About</h2></div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm an Information Technology undergraduate at KPR Institute of Engineering and Technology, building software where correctness genuinely matters — from real-time object detection to on-device AI that runs without an internet connection.</p>
+        <p>My current focus is <strong>Guardian AI</strong>, a personal-safety app that performs multilingual threat analysis entirely on-device using a Gemma language model, so it keeps working even offline. Outside of that, I've shipped computer-vision systems for parking occupancy and an NLP tool that summarizes legal documents and answers questions about them.</p>
+        <p>I care about building things that work end-to-end — model to UI — and I'm looking for internship or entry-level roles in software, AI/ML, or mobile engineering.</p>
+      </div>
+      <div class="stat-block reveal">
+        <div class="stat"><div class="num">8.51</div><div class="cap">CURRENT CGPA</div></div>
+        <div class="stat"><div class="num">96.3%</div><div class="cap">CLASS XII SCORE</div></div>
+        <div class="stat"><div class="num">4</div><div class="cap">SHIPPED PROJECTS</div></div>
+        <div class="stat"><div class="num">2</div><div class="cap">COMPLETED INTERNSHIPS</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-head reveal"><span class="idx mono">02</span><h2>Skills</h2></div>
+    <div class="skill-grid">
+      <div class="skill-mod reveal">
+        <h3>Languages</h3>
+        <div class="tag-row">
+          <span class="tag">Java</span><span class="tag">Python</span><span class="tag">JavaScript</span>
+          <span class="tag">C</span><span class="tag">C++</span><span class="tag">SQL</span><span class="tag">Dart</span>
+        </div>
+      </div>
+      <div class="skill-mod reveal">
+        <h3>Frontend</h3>
+        <div class="tag-row">
+          <span class="tag">React.js</span><span class="tag">Vite</span><span class="tag">HTML/CSS</span><span class="tag">Angular</span>
+        </div>
+      </div>
+      <div class="skill-mod reveal">
+        <h3>Backend</h3>
+        <div class="tag-row">
+          <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">FastAPI</span>
+          <span class="tag">REST API</span><span class="tag">Flask</span><span class="tag">Django</span>
+        </div>
+      </div>
+      <div class="skill-mod reveal">
+        <h3>Mobile</h3>
+        <div class="tag-row">
+          <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Android SDK</span>
+        </div>
+      </div>
+      <div class="skill-mod reveal">
+        <h3>AI &amp; ML</h3>
+        <div class="tag-row">
+          <span class="tag">YOLOv8</span><span class="tag">OpenCV</span><span class="tag">Object Detection</span>
+          <span class="tag">NLP</span><span class="tag">Transformers</span><span class="tag">LiteRT-LM (Gemma)</span>
+        </div>
+      </div>
+      <div class="skill-mod reveal">
+        <h3>Tools &amp; Platforms</h3>
+        <div class="tag-row">
+          <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Firebase</span>
+          <span class="tag">Google Maps API</span><span class="tag">Hive</span><span class="tag">Geolocator</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-head reveal"><span class="idx mono">03</span><h2>Projects</h2></div>
+
+    <div class="project-card flagship reveal">
+      <div>
+        <div class="project-top">
+          <h3>Guardian AI</h3>
+          <span class="status active">● IN PROGRESS</span>
+        </div>
+        <p>An AI-powered personal safety application that runs threat analysis fully on-device — no cloud dependency. It integrates a Gemma language model via LiteRT-LM to detect threats from speech/text in both English and Tamil, then routes into an SOS workflow.</p>
+        <ul>
+          <li>Offline AI-based threat detection using Gemma (LiteRT-LM)</li>
+          <li>Emergency contact management and SOS workflow</li>
+          <li>Real-time GPS location and battery monitoring</li>
+          <li>Guardian confidence dashboard with live safety indicators</li>
+          <li>Multilingual support — English &amp; Tamil</li>
+          <li>Planned: voice analysis, automatic SOS triggering, incident history</li>
+        </ul>
+      </div>
+      <div class="project-side">
+        <div class="stack-label">TECH STACK</div>
+        <div class="tag-row">
+          <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">LiteRT-LM (Gemma)</span>
+          <span class="tag">Android SDK</span><span class="tag">Geolocator</span><span class="tag">Hive</span><span class="tag">URL Launcher</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <div class="project-top">
+          <h3>ParkCount</h3>
+          <span class="status done">● COMPLETE</span>
+        </div>
+        <p>A computer-vision system that counts free parking spaces in real time from live CCTV feeds.</p>
+        <ul>
+          <li>Trained a YOLOv8 model to detect and count available parking spaces</li>
+          <li>Reads and processes live input directly from CCTV camera feeds</li>
+        </ul>
+      </div>
+      <div class="project-side">
+        <div class="stack-label">TECH STACK</div>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">YOLOv8</span><span class="tag">OpenCV</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <div class="project-top">
+          <h3>AI Legal Document Summarizer</h3>
+          <span class="status done">● COMPLETE</span>
+        </div>
+        <p>A web application that summarizes legal documents and answers follow-up questions through a built-in chatbot.</p>
+        <ul>
+          <li>Generates concise NLP-based summaries of uploaded legal documents</li>
+          <li>Chatbot trained to answer user questions specific to the document</li>
+        </ul>
+      </div>
+      <div class="project-side">
+        <div class="stack-label">TECH STACK</div>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">NLP</span><span class="tag">OpenAI API</span>
+          <span class="tag">React</span><span class="tag">Flask</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-head reveal"><span class="idx mono">04</span><h2>Experience</h2></div>
+    <div class="log">
+      <div class="log-entry reveal">
+        <div class="log-time mono">GENERATIVE AI INTERN · INNOVO8 TECH SOLUTIONS</div>
+        <h3>30-Day Gen-AI Internship</h3>
+        <p>Coimbatore, India — Worked hands-on with generative AI tools and techniques to build practical applications.</p>
+      </div>
+      <div class="log-entry reveal">
+        <div class="log-time mono">AI-IOT INTERN · GATEWAY TECH SOLUTIONS</div>
+        <h3>30-Day AI-IoT Internship</h3>
+        <p>Coimbatore, India — Gained hands-on experience building and deploying real-world AI-integrated IoT projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-head reveal"><span class="idx mono">05</span><h2>Education</h2></div>
+    <div class="edu-item reveal">
+      <div>
+        <h3>B.Tech, Information Technology (Pursuing)</h3>
+        <div class="school">KPR Institute of Engineering and Technology, Coimbatore</div>
+      </div>
+      <div>
+        <div class="metric">CGPA 8.51 / 10</div>
+        <div class="yr">2024 – 2028</div>
+      </div>
+    </div>
+    <div class="edu-item reveal">
+      <div>
+        <h3>Class XII — Maths &amp; Computer Science</h3>
+        <div class="school">Higher Secondary Education</div>
+      </div>
+      <div>
+        <div class="metric">96.3%</div>
+        <div class="yr">2022 – 2024</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's build something that works.</h2>
+    <p>Open to internships and entry-level software / AI-ML / mobile roles.</p>
+    <div class="footer-links">
+      <a href="mailto:manojkmar1106@gmail.com" class="btn btn-primary">Email Me</a>
+      <a href="https://github.com/Manoj-1Kumar" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+      <a href="https://linkedin.com/in/manojkumar-p" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+    </div>
+    <div class="foot-note">© <span id="yr"></span> MANOJKUMAR P — BUILT WITH HTML, CSS &amp; JS</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Typewriter role line
+  const roles = [
+    "Software Developer",
+    "AI / ML Engineer",
+    "Flutter & Mobile Developer",
+    "Computer Vision Enthusiast"
+  ];
+  const el = document.getElementById('roleLine');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduceMotion) {
+    el.textContent = roles[0];
+    el.style.borderRight = 'none';
+  } else {
+    let ri = 0, ci = 0, deleting = false;
+    function tick(){
+      const word = roles[ri];
+      el.textContent = deleting ? word.slice(0, ci--) : word.slice(0, ci++);
+      let delay = deleting ? 40 : 70;
+      if (!deleting && ci === word.length + 1) { delay = 1400; deleting = true; }
+      else if (deleting && ci === 0) { deleting = false; ri = (ri + 1) % roles.length; delay = 300; }
+      setTimeout(tick, delay);
+    }
+    tick();
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(elm => observer.observe(elm));
+</script>
+
+</body>
+</html>
