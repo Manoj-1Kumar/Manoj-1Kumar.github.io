@@ -4,7 +4,7 @@ Welcome to my personal portfolio website! This portfolio showcases my skills, pr
 
 ## 🚀 Live Demo
 
-🔗 **Portfolio:** https://manoj-1kumar-portfolio.netlify.app/
+🔗 **Portfolio:** (https://manoj-1kumar.github.io/)
 
 ---
 
@@ -30,6 +30,6 @@ Hi, I'm **Manoj Kumar P**, a B.Tech Information Technology student passionate ab
 
 Visit the live website to explore the complete portfolio.
 
-👉 **https://manoj-1kumar-portfolio.netlify.app/**
+👉 **https://manoj-1kumar.github.io/**
 
 ---
